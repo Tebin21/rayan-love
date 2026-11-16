@@ -272,7 +272,85 @@
       padding: 56px 44px;
       text-align: center;
       position: relative;
+      background: #ffffff;
+      border-radius: 42px;
+      border: 1px solid rgba(255, 225, 235, 0.85);
+      box-shadow: 
+        0 25px 75px rgba(240, 115, 150, 0.16),
+        0 8px 25px rgba(255, 175, 195, 0.22);
       animation: floatSlow 5s ease-in-out infinite alternate;
+    }
+
+    .proposal-card .cute-tag {
+      background: #ffe8ee !important;
+      color: #c95176 !important;
+      padding: 7px 24px !important;
+      border-radius: 50px !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      border: 1px solid rgba(255, 185, 205, 0.45) !important;
+      display: inline-block !important;
+      margin-bottom: 24px !important;
+    }
+
+    .proposal-title {
+      font-family: 'Doran', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Tahoma, sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+      color: #5c1428;
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+
+    .proposal-subtitle {
+      font-size: 20px;
+      color: #8c3e53;
+      line-height: 1.65;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    .proposal-btn-yes {
+      background: linear-gradient(135deg, #ff4d79 0%, #e6195e 100%) !important;
+      color: #ffffff !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      padding: 15px 36px !important;
+      border-radius: 999px !important;
+      border: none !important;
+      box-shadow: 0 10px 28px rgba(230, 25, 94, 0.38) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      cursor: pointer !important;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+
+    .proposal-btn-yes:hover {
+      transform: translateY(-2px) scale(1.04) !important;
+      box-shadow: 0 15px 36px rgba(230, 25, 94, 0.48) !important;
+    }
+
+    .proposal-btn-no {
+      background: #ffffff !important;
+      color: #633342 !important;
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      padding: 15px 34px !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(0, 0, 0, 0.06) !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(235, 120, 150, 0.08) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+
+    .proposal-btn-no:hover {
+      background: #fff8fa !important;
+      transform: translateY(-1px) !important;
     }
 
     @keyframes floatSlow {
@@ -1452,6 +1530,136 @@
         padding: 36px 20px;
       }
     }
+
+    /* ==========================================================
+       GRAND BIRTHDAY LETTER SCREEN (سکرینێکی تایبەتی تەواو و یەک تەبڵ)
+    ========================================================== */
+    .grand-letter-screen {
+      position: relative;
+      z-index: 50;
+      width: 100%;
+      min-height: 100vh;
+      padding: 40px 20px 140px;
+      display: none;
+      animation: fadeIn 0.8s forwards;
+    }
+
+    .grand-letter-screen.active {
+      display: block;
+    }
+
+    .letter-master-table {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 50px;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(28px);
+      border: 2.5px solid rgba(255, 215, 0, 0.7);
+      box-shadow: 0 30px 80px rgba(186, 38, 93, 0.25), inset 0 0 50px rgba(255, 240, 246, 0.7);
+      text-align: right;
+      direction: rtl;
+    }
+
+    .letter-master-header {
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 2px dashed rgba(255, 107, 139, 0.45);
+      padding-bottom: 30px;
+    }
+
+    .letter-wax-seal {
+      font-size: 64px;
+      margin-bottom: 14px;
+      animation: bounce 2.5s infinite;
+    }
+
+    .letter-title {
+      font-size: 42px;
+      font-weight: 900;
+      color: #72162e;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .letter-subtitle {
+      font-size: 21px;
+      color: #ba265d;
+      font-weight: 800;
+    }
+
+    .letter-prose {
+      font-size: 20px;
+      line-height: 2.3;
+      color: #4a0d1d;
+      font-weight: 600;
+      margin: 24px 0;
+    }
+
+    .inline-poem-box {
+      margin: 32px 0;
+      padding: 26px 30px;
+      background: linear-gradient(135deg, rgba(255, 245, 248, 0.98), rgba(255, 235, 242, 0.96));
+      border: 1.5px solid rgba(255, 215, 0, 0.75);
+      border-right: 6px solid #ff4d6d;
+      border-radius: 22px;
+      box-shadow: 0 10px 28px rgba(220, 130, 155, 0.16);
+    }
+
+    .inline-poem-author {
+      font-size: 17px;
+      font-weight: 900;
+      color: #ba265d;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .inline-poem-verse {
+      font-size: 20px;
+      line-height: 2.3;
+      color: #72162e;
+      font-weight: 700;
+      white-space: pre-line;
+    }
+
+    .letter-divider {
+      text-align: center;
+      color: #ffd700;
+      font-size: 24px;
+      margin: 40px 0;
+      letter-spacing: 5px;
+    }
+
+    .letter-signature-card {
+      margin-top: 50px;
+      padding: 34px;
+      background: rgba(255, 240, 246, 0.95);
+      border-radius: 26px;
+      border: 2px solid #ff6b8b;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(255, 107, 139, 0.18);
+    }
+
+    @media (max-width: 768px) {
+      .letter-master-table {
+        padding: 36px 20px;
+        border-radius: 28px;
+      }
+      .letter-title {
+        font-size: 30px;
+      }
+      .letter-prose {
+        font-size: 18px;
+        line-height: 2.1;
+      }
+      .inline-poem-verse {
+        font-size: 18px;
+        line-height: 2.1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1488,7 +1696,7 @@
         ڕۆژی لەدایکبوونی شازادە رەیان
       </h1>
       <p style="font-size: 18px; color: #8c3b52; line-height: 1.7; max-width: 520px; margin: 0 auto 16px;">
-        « هەموو گەردوون چاوەڕوانی کاتژمێر ١٢:٠٠ی ئەمشەوە...<br>تا بە فەرمی پیرۆزترین ڕۆژی ساڵ دەست پێبکات! 🤍✨ »
+        « هەموو گەردوون چاوەڕوانی کاتژمێر ١٢:٥٥ی ئەمشەوە...<br>تا بە فەرمی پیرۆزترین ڕۆژی ساڵ دەست پێبکات! 🤍✨ »
       </p>
 
       <!-- Live Countdown Grid -->
@@ -1510,7 +1718,7 @@
       </div>
 
       <div class="countdown-note">
-        « ئەم پەڕەیە لە کاتژمێر ١٢:٠٠ی شەو (دەستپێکی ١٧ی تشرینی دووەم) خۆکارانە دەکرێتەوە! ✨🎁 »
+        « ئەم پەڕەیە لە کاتژمێر ١٢:٥٥ی ئەمشەو خۆکارانە دەکرێتەوە! ✨🎁 »
       </div>
 
       <!-- Secret Bypass for Tebin to Preview -->
@@ -1524,21 +1732,21 @@
        SCREEN 1: THE INITIAL BIRTHDAY OVERLAY
   ========================================================== -->
   <div id="proposal-overlay">
-    <div class="liquid-glass proposal-card">
-      <div class="cute-tag">رەیانەکەم... ڕۆژی لەدایکبوونت پیرۆز 🎂🌸</div>
-      <h1 class="proposal-title">ئامادەی ڕۆژی بوونت بەرز بنرخێنین؟</h1>
+    <div class="proposal-card">
+      <div class="cute-tag">🌸 رەیانەکەم... 🌸</div>
+      <h1 class="proposal-title">ڕازی دەبی لەگەڵم بژیت؟</h1>
       <p class="proposal-subtitle">
-        « لە ڕۆژی هاتنت بۆ دونیا، بەهار لە چاوەکانتەوە ڕوا...<br>تۆ جوانترین دیاری تەمەنی منیت تاقانەکەم 🤍✨ »
+        تۆ هەموو ئارامی و تاقانەی دڵمی... بەڵێنم پێ بدە تا کۆتایی پێکەوە بین ❤️
       </p>
 
       <div class="proposal-buttons">
-        <button class="liquid-btn liquid-btn-primary" id="btn-yes" onclick="handleYesClick()">
-          <span>با بەرز بینرخێنین</span>
-          <span>🎉❤️</span>
+        <button class="liquid-btn proposal-btn-yes" id="btn-yes" onclick="handleYesClick()">
+          <span>بەڵێ، ڕازیم</span>
+          <span>❤️</span>
         </button>
 
-        <button class="liquid-btn" id="btn-no" onclick="handleNoClick()">
-          <span>نا، نامەوێ</span>
+        <button class="liquid-btn proposal-btn-no" id="btn-no" onclick="handleNoClick()">
+          <span>نەخێر</span>
         </button>
       </div>
     </div>
@@ -1734,6 +1942,14 @@
       <!-- Floating Romantic Words Container after Explosion -->
       <div id="floating-words-container" class="floating-words-cloud"></div>
 
+      <!-- Big Glowing Next Button to Dedicated Grand Letter Screen -->
+      <div id="next-to-letter-btn-wrapper" class="next-letter-wrapper" style="margin-top: 32px; display: none; justify-content: center;">
+        <button class="liquid-btn liquid-btn-primary next-letter-btn" onclick="showGrandBirthdayLetterScreen()">
+          <span>کردنەوەی نامەی لەدایکبوون و دیوانی عەشق (سکرینی تەواو) 📜💖</span>
+          <span style="font-size: 24px;">✨</span>
+        </button>
+      </div>
+
       <div class="final-bday-actions" style="margin-top: 36px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <button class="liquid-btn liquid-btn-primary" onclick="startClassicMode()">
           <span>سەردانی پەیجی ئاسایی (ماڵ و ورچی 3D) بکە 🏡</span>
@@ -1744,6 +1960,272 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- =========================================================
+       DEDICATED FULLSCREEN: GRAND BIRTHDAY LOVE LETTER SCREEN
+  ========================================================== -->
+  <div id="grand-birthday-letter-screen" class="grand-letter-screen">
+    
+    <!-- Top Nav Controls -->
+    <div class="birthday-top-bar" style="max-width: 900px; margin: 0 auto 30px;">
+      <button class="liquid-btn" style="padding: 10px 20px; font-size: 15px;" onclick="returnFromGrandLetter()">
+        <span>← گەڕانەوە بۆ هەڵبژاردنی گەشت</span>
+      </button>
+      <div class="cute-tag" style="margin: 0;">نامەی تایبەتی ڕۆژی لەدایکبوونی رەیان (١٧ - ١١) 👑❤️</div>
+    </div>
+
+    <!-- Unified Master Table / Parchment Scroll -->
+    <div class="liquid-glass letter-master-table">
+      
+      <div class="letter-master-header">
+        <div class="letter-wax-seal">👑💌✨</div>
+        <h1 class="letter-title">نامەی عەشقی بێ‌کۆتا و دیوانی لەدایکبوون</h1>
+        <div class="letter-subtitle">تایبەت بە ڕۆژی پیرۆزی هاتنە دنیای شازادە رەیان (١٧ی ١١) 🌸</div>
+        <div class="letter-divider">✦ ══════════════ 🤍 ══════════════ ✦</div>
+      </div>
+
+      <!-- Part 1: Sherko Bekas -->
+      <p class="letter-prose">
+        <strong>رەیانەکەم... شاژنی دڵم و تاقانەی هەموو ژیانم...</strong><br>
+        ئەمڕۆ ١٧ی تشرینی دووەمە، پیرۆزترین و بەنرخترین ڕۆژ لە تەواوی مێژووی ژیانی مندا. ڕۆژێک کە خودای گەورە جوانترین و پاکترین دیاریی ئاسمانی پێ بەخشیم و تۆی هێنایە ئەم جیهانەوە تا ببیت بە هەموو هۆکاری هەناسەدان، ئارامی، و پێکەنینی من. کاتێک سەیری مێژووی ژیانم دەکەم پێش هاتنی تۆ، هەمووی غەریبی و بارانی تەنیایی بوو، پیاوێک بووم لەژێر ڕێژنی ماندووبوونی ڕۆژگاردا بە تەنیا دەڕۆیشتم، بەڵام تۆ بە چاوە پڕ لە میهرەبانییەکانتەوە هاتی و بوویتە بەهاری هەمیشەیی من، ڕێک وەک ئەوەی شاعیری گەورە <strong>شێرکۆ بێکەس</strong>م بیر بکەوێتەوە کاتێک لە قوڵایی عەشق و سروشتەوە دەفەرموێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>🌸 شێرکۆ بێکەس (لە قوڵایی عەشق و سروشتەوە):</span>
+        </div>
+        <div class="inline-poem-verse">تۆ...
+لە کوێوە هاتی و چۆن بووی بە بەشێک لە من؟
+من کە ساڵانێک بوو بە تەنیا
+لەژێر بارانی غەریبیدا دەڕۆیشتم!
+تۆ هاتی و چەترەکەت کرد بە ئاسمانێک بۆ سەرم.
+لەو ڕۆژەوەی چاوەکانتم دیوە،
+دەزانم کە ئیتر
+هیچ زریانێک ناتوانێت
+گوڵەکانی باخچەی دڵم هەڵوەرێنێت،
+چونکە تۆ... تا هەتایە بەهاری هەمیشەیی منی.</div>
+      </div>
+
+      <!-- Part 2: Baxtiar Ali -->
+      <p class="letter-prose">
+        رەیانم، لەم ڕۆژە پیرۆزەتدا دەمەوێت لە ناخی دڵمەوە پێت بڵێم کە عەشقی من بۆ تۆ لە هەموو یاسا، سنوور، و قسەیەکی ئەم سەردەمە گەورەترە. من پێویستم بە هیچ دنیا و نیشتمانێک نییە ئەگەر چاوە پڕ لە سۆزەکانت تێدا نەبێت، ئەگەر هەموو خەڵکی دونیاش لەسەر خۆشویستنی تۆ لۆمەم بکەن، من بەوپەڕی شانازییەوە تاوانباری بەردەم دادگای عەشقی چاوەکانت دەبم. من لەناو دەنگ و نیگاکانتدا ئەو بەشەی ڕۆحم دۆزییەوە کە ساڵانێک بوو لێم ون ببوو، دەستەکانت دەگرم و چاوم دەچێتە چاوت و دەزانم ژیان تەنها لەگەڵ تۆ مانای هەیە، هەر وەک نووسەر و بیرمەندی مەزن <strong>بەختیار عەلی</strong> بەو عەشقە فەلسەفی و شۆڕشگێڕانەیەوە وەسفی دەکات:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>💫 بەختیار عەلی (عەشقێکی فەلسەفی و شۆڕشگێڕانە):</span>
+        </div>
+        <div class="inline-poem-verse">من دەمەوێت لەناو چاوەکانتدا بمرم، نەک لەناو جەنگەکاندا!
+ئەی ئەو ژنەی وەک با هاتی و وەک گەردەلوول ڕۆحم دەبەیت.
+ئەگەر خۆشەویستیی تۆ تاوان بێت،
+با هەموو دادگاکانی دنیا بمکەن بە تاوانبار.
+تۆ ئەو نیشتمانەیت کە هیچ سنوورێکی نییە،
+من لەناو تۆدا هەموو شتێک دەدۆزمەوە،
+تەنانەت ئەو بەشەی خۆشم کە ساڵانێکە ونم کردووە.
+کە دەستەکانت دەگرم و چاوم دەچێتە چاوت،
+ئیتر دەزانم کە مردن هیچ نییە،
+جگە لە درۆیەک بۆ ئەوانەی هەرگیز نەیانتوانیوە ئاشق بن.</div>
+      </div>
+
+      <!-- Part 3: Abdulla Pashew -->
+      <p class="letter-prose">
+        شەوانە کاتێک لە بێدەنگیدا دادەنیشم و بیر لە گەورەیی دڵ و میهرەبانیت دەکەمەوە، هەست دەکەم زمانم توانای وەسفکردنی نییە. عەشقی من بۆ تۆ بۆ کات بەسەربردن یان وەک عەشقی ئاسایی خەڵک نییە، بەڵکو وەک تامەزرۆیی بیابانە بۆ دڵۆپێک باران، وەک تامەزرۆیی مۆمە بۆ ئاگر، من لەناو چاوەکانتدا پیرۆزترین عیبادەتی وەفاداری بۆ هەتاهەتایە دەکەم، ڕێک وەک ئەوەی شاعیری گەورەمان <strong>عەبدوڵڵا پەشێو</strong> لە ناخی دڵەوە دەفەرموێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>🕊️ عەبدوڵڵا پەشێو (عەشقێکی ڕاستەقینە و بێسنوور):</span>
+        </div>
+        <div class="inline-poem-verse">شەوانە کە بیرت لێ دەکەمەوە،
+هەزاران وشە لە مێشکمدا سەما دەکەن.
+بەڵام کە دێیتە پێشم،
+زمانم دەبێتە پارچە سەهۆڵێک و ناتوێتەوە.
+تۆم خۆش دەوێ، نەک وەک ئەوانەی
+بۆ کات بەسەربردن یەکتریان خۆش دەوێ.
+تۆم خۆش دەوێ، وەک چلە کە خۆشی دەوێ ئاگر،
+وەک بیابان کە تامەزرۆی تنۆکێک ئاوە.
+من باوەڕم بە هیچ ئایینێک نییە بۆ سەلماندنی عەشق،
+تەنیا چاوەکانی تۆ نەبێت کە تێیدا نوێژی مانەوەم دەکەم.</div>
+      </div>
+
+      <!-- Part 4: Abdulla Goran -->
+      <p class="letter-prose">
+        بڕوانە رەیانە نازدارەکەم، تەنانەت پاییزیش لەبەردەم زەردەخەنە و نیگای تۆدا شەرمن دەبێت و دەگۆڕێت بۆ بەهاری گوڵ و پێکەنین. پرچت وەک شەپۆلی زێ و چاوەکانت وەک ئەستێرەی درەوشاوەی ئاسمانن، هەر کاتێک دێیتە خەیاڵم هەموو خەمێکی دنیا لەبیر دەکەم، هەموو وشەکانی تێبین بۆ باڵای ناسکی تۆیە چونکە لەم گەردوونەدا هیچ شتێک ناگاتە نیوەی جوانیی تۆ، وەک ئەوەی شاعیری ناسکی <strong>عەبدوڵڵا گۆران</strong> لە ستایشی باڵاتدا دەڵێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>🎀 عەبدوڵڵا گۆران (لە ناسکی و جوانیی یارەوە):</span>
+        </div>
+        <div class="inline-poem-verse">پاییزە! گەڵا ڕێزانە...
+بەڵام لە دڵی مندا بۆ تۆ هەر هەردەم بەهارە!
+ئەی ئەو کچەی پێکەنینت، تاریکیی شەوانی من ڕووناک دەکاتەوە.
+پرچت وەک شەپۆلی زێ و چاوەکانت وەک ئەستێرەی گەش،
+هەر کە دێیتە خەیاڵمەوە، هەموو خەمەکانی دنیا لە یاد دەکەم.
+من شیعرەکانم هەمووی بۆ باڵای تۆیە،
+چونکە هیچ جوانییەک لەم گەردوونەدا،
+ناگاتە نیوەی جوانیی زەردەخەنەی سەر لێوەکانت.
+تۆ سروشتی منی و منیش ئەو باڵندەیەی،
+کە هەرگیز ناتوانم ئاسمانی تۆ جێبهێڵم.</div>
+      </div>
+
+      <!-- Part 5: Ahmad Hardi -->
+      <p class="letter-prose">
+        تۆ وەک مانگی چواردە لەناو تاریکی و شەوەزەنگی ژیانمدا دەرکەوتیت، هەموو برین و ماندووبوونێکی ڕۆژگارت لە دڵم ڕەواندەوە. من بەبێ سۆز و چاوەکانت وەک مۆمێکی بەر با دەسوتێم، تا دوا هەناسە دیل و پەروانەی ڕووی تۆم، با تەمەن بڕوات و ساڵ بە ساڵ نوێ ببینەوە بەڵام خۆشەویستیی تۆ لە دڵمدا هەرگیز کاڵ نابێتەوە، هەر وەک شاعیری بەسۆز <strong>ئەحمەد هەردی</strong> بە دڵێکی پڕ لە خۆشەویستییەوە دەڵێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>🌙 ئەحمەد هەردی (کلاسیکێکی پڕ سۆز و نائومێدیی جوان):</span>
+        </div>
+        <div class="inline-poem-verse">کە دەرکەوتی، وەکوو مانگی چواردە لەناو شەوەزەنگا،
+دڵم کەوتە لێدان، وەک باڵندەیەکی دیل لە قەفەزا.
+ئەی نیگارت وێنەی فریشتەی ئاسمان،
+ئەی خەندەت شیفای هەموو دەرد و ئازار.
+من بەبێ تۆ، وەک مۆمێکی بەر با دەسوتێم و دەتوێمەوە،
+تۆ کە هەی، هەموو تاریکییەکانی ژیانم دەڕەوێتەوە.
+با هەموو دنیا بزانێت کە من تا دوا هەناسە،
+دیل و پەروانەی ڕووی تۆم و بۆت دەسووتێم.
+با تەمەن بڕوا و ساڵەکان زوو تێپەڕن،
+خۆشەویستیی تۆ لە دڵمدا هەرگیز کاڵ نابێتەوە.</div>
+      </div>
+
+      <!-- Part 6: Mahwi -->
+      <p class="letter-prose">
+        شەو نییە خەیاڵی زولفت نەبێتە میوانی دڵم، ڕۆژ نییە یادی ڕووی نازدارت چرای گیانم نەبێت. دڵم بەبێ تۆ وەک ئاوێنەیەکی شکاو بوو لەم جیهانەدا، بەڵام بە نیگایەکی تۆ هەمووی ساڕێژ بوویەوە. من لە کووچەی عەشقی تۆدا ئەگەر هیچیشم نەبێت، بە هەبوونی تۆ و بە خۆشویستنت شایەکی بێ تاج و تەختی تەواوی گەردوونم، ڕێک وەک ئەوەی حەزرەتی <strong>مەحوی</strong> لە عیرفان و ڕۆحانیەتی عەشقدا دەفەرموێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>🕯️ حەزرەتی مەحوی (عەشقێکی عیرفانی و ڕۆحانی):</span>
+        </div>
+        <div class="inline-poem-verse">شەو نییە خەیاڵی زوڵفت نەبێتە میوانی دڵ،
+ڕۆژ نییە یادی ڕووت نەبێتە چرای گیانم.
+ئەی ئەو کەسەی لە هەموو کەس نزیکتری لێم و
+لەسەر زەویش لە هەمووان دوورتری لە دەستم.
+دڵم وەک ئاوێنەیەکی شکاوە وایە بێ تۆ،
+تەنیا بە نیگایەکی تۆ دەبێتەوە یەک و ساڕێژ دەبێت.
+دەردی عەشقت گەرچی پڕ لە ئازار و چاوەڕوانییە،
+بەڵام دەرمانی هەموو دەردەکانی تری ژیانمە.
+من لە کووچەی عەشقی تۆدا بووم بە گەداترین کەس،
+بەڵام بەم گەداییە، شایەکی بێ تاج و تەختم!</div>
+      </div>
+
+      <!-- Part 7: Wafayi -->
+      <p class="letter-prose">
+        ئەی شیرینترین پەخششی خودا، چاوەکانت دوو تیری ئەفسوناوی بوون کە کەوتنە ناو ناخی جەرگ و ڕۆحمەوە. من وەک مەجنوون لە سارای عەشقی تۆدا شەیدام و بێ نازی چاوەکانت ڕۆژم نابێتەوە، هەمیشە بەو سۆز و نیگا پاکەتەوە سەیری تێبین بکە کە هەموو بوونی فیدای تۆ کردووە، هەر وەک شاعیری دڵسووتاو <strong>وەفایی</strong> بە نزا و سۆزەوە هاوار دەکات و دەڵێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>💘 وەفایی (سۆزێکی ڕۆمانسی بۆ یاری بێ مەیل):</span>
+        </div>
+        <div class="inline-poem-verse">شیرین گیان، ئەی شیرین گیان!
+بۆچی وا بێ مەیلی لەگەڵ ئەم دڵە سووتاوەم؟
+چاوەکانت دوو تیرن و ڕاست لە جەرگمیان داوە،
+زولفەکانت داون و ڕۆحمیان تێدا گیرۆدە کردووە.
+نە خەوم ماوە نە قەرار، شەو و ڕۆژ لە ناڵەدام،
+وەک مەجنوون لە سارای عەشقتدا وێڵ و سەرگەردانم.
+گەر بڕیارە بمرم، با لەبەردەم پێی تۆدا بێت،
+با خوێنم بڕژێت بەسەر خاکی ڕێگەی عەشقی تۆدا.
+ئەی نازەنین، مەهێڵە بە بێ نازی بمرم و
+جارێک بە چاوی ڕەحمەت سەیری حاڵی زارم بکە.</div>
+      </div>
+
+      <!-- Part 8: Hemin Mukriyani -->
+      <p class="letter-prose">
+        هەموو ئاواتی دڵم ئەوەیە لە باوەشی شیعر و باوەشی دڵمدا بتشارمەوە تا هیچ غەم و چاوێکی پیس پێت نەگات. تۆ ئەو گوڵە شەوبۆیەیت کە تەنها بۆ تێبین بۆن و بەرامەی ژیانیت، لەم دنیایەدا کە پڕە لە درۆ، تەنها عەشق و پاکی تۆیە کە ڕاستەقینە و بێگەردە، دڵم وەک منداڵێک بۆت لێدەدات، وەرە با پێکەوە شارێک دروست بکەین کە تەنها خۆشەویستی تێدا بێت، هەر وەک مامۆستا <strong>هێمن موکریانی</strong> بە خەیاڵە پاکە عاشقانەکەی دەڵێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>🌺 هێمن موکریانی (عەشقێکی پاک و خەیاڵاویی):</span>
+        </div>
+        <div class="inline-poem-verse">من دەمەوێ لە باوەشی شیعرەکانمدا بتشارمەوە،
+نەوەک چاوی پیسی ڕۆژگار پێت بگات!
+تۆ ئەو گوڵە شەوبۆیەیت کە تەنیا بۆ من بۆن دەدەیت.
+لەم دنیایەدا کە پڕە لە درۆ و ڕییا،
+تەنیا خۆشەویستیی تۆیە ڕاستەقینە و بێگەرد.
+گەنجیم ڕۆیشت و پیر بووم لە چاوەڕوانیدا،
+بەڵام هێشتا دڵم وەک منداڵێک بۆت لێ دەدات.
+وەرە با پێکەوە بچینە شارێک کە کەسمان نەناسێت،
+لەوێ تەنیا بین و من هەر شیعرت بۆ بخوێنمەوە،
+تۆش بە زەردەخەنەیەک، دنیا بکەیت بە بەهەشت.</div>
+      </div>
+
+      <!-- Part 9: Latif Halmat -->
+      <p class="letter-prose">
+        ئەگەر تۆ نەبوویتایە لە ژیانمدا، من نەمدەزانی باران چۆن دەبارێت و دارەکان چۆن چرۆ دەکەن. تۆ کە پێدەکەنی تەواوی سەعاتەکان لەبەر جوانیت لە کار دەکەون، من هیچ کتێبێک و گۆرانییەکم ناوێت کاتێک چاوەکانت گەورەترین ڕۆمانن و دەنگت جوانترین ئاوازە. خۆشم دەوێیت بە قەد ئەو عەشقەی کە تا ئێستا لە گەردووندا نەدۆزراوەتەوە، هەر وەک شاعیر <strong>لەتیف هەڵمەت</strong> بەو زمانە مۆدێرن و یاخییەی دەڵێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>⚡ لەتیف هەڵمەت (زمانی مۆدێرن و یاخی لە عەشقدا):</span>
+        </div>
+        <div class="inline-poem-verse">گەر تۆ نەبیت...
+من نازانم باران چۆن دەبارێت و
+دارەکان چۆن گەڵا دەردەکەن!
+تۆ کە پێدەکەنی،
+هەموو سەعاتەکانی ماڵەوەمان لە کار دەکەون،
+چونکە کات لەبەردەم جوانیی تۆدا دەوەستێت.
+من نامەوێت هیچ کتێبێک بخوێنمەوە،
+کاتێک چاوەکانی تۆ گەورەترین ڕۆمانن.
+من نامەوێت هیچ گۆرانییەک ببیستم،
+کاتێک دەنگی تۆ جوانترین ئاوازە بۆ گوێیەکانم.
+خۆشم دەوێیت، نەک بەقەد گەردوون،
+بەڵکو بەقەد ئەو عەشقەی کە تا ئێستا نەدۆزراوەتەوە.</div>
+      </div>
+
+      <!-- Part 10: Ranj Sangawi -->
+      <p class="letter-prose">
+        و لە گەرمەی ئەم خۆشەویستی و پیرۆزباییەدا، دەزانی چی رەیان گیان... من بە شێتانەترین هەستی دنیا تۆم دەوێت! هێندەی هەموو ئەو کاتانەی کە لە دڵتەنگیدا لێت دوور بووم و بە خەیاڵی باوەشتەوە ڕۆژم کردۆتەوە. بە تەواوی کەموکوڕی و نازی دونیاوە تۆم هەڵبژاردووە ببیتە شاژنی تەواوی دڵ و تەمەنم، تۆ تا هەتایە لەناو دەمارەکانمدا دەمێنیتەوە، ڕێک وەک ئەوەی شاعیر <strong>ڕەنج سەنگاوی</strong> بە عەشقە شێتانە و ئەمڕۆییەکەی هاوار دەکات و دەڵێت:
+      </p>
+
+      <div class="inline-poem-box">
+        <div class="inline-poem-author">
+          <span>🔥 ڕەنج سەنگاوی (عەشقێکی شێتانە و ئەمڕۆیی):</span>
+        </div>
+        <div class="inline-poem-verse">دەزانی چی...
+من هێندەی هەموو ئەو ئازارانەی پێتم داوە خۆشم دەوێی!
+هێندەی ئەو شەوە درێژانەی بێ تۆ بەڕێم کردن.
+تۆ ئەو هەڵەیەی کە دەمەوێ هەموو ڕۆژێک دووبارەی بکەمەوە.
+کە گوێت لێم نییە، لەناخەوە هاوار دەکەم،
+کە دەشتبینم، بێدەنگی دایدەگرێتە سەر لێوەکانم.
+لێم مەپرسە بۆچی وام، عەشق خۆی شێتگیرییە.
+من بە تەواوی کەموکوڕییەکانتەوە،
+بە تەواوی ئەو شتانەی کە خەڵک پێی دەڵێن عەیبە،
+تۆم هەڵبژاردووە بۆ ئەوەی بیتە شاژنی دڵم.
+ڕەنگە قەدەر ئێمە بەیەک نەگەیەنێت،
+بەڵام تۆ تا هەتایە لەناو دەمارەکانمدا دەمێنیتەوە.</div>
+      </div>
+
+      <div class="letter-divider">✦ ══════════════ 🤍 ══════════════ ✦</div>
+
+      <!-- Concluding Oath -->
+      <div class="letter-signature-card">
+        <div style="font-size: 36px; margin-bottom: 12px;">💍👑❤️</div>
+        <h3 style="font-size: 28px; color: #ba265d; font-weight: 900; margin-bottom: 14px;">
+          بەڵێنی هەمیشەیی و پیرۆزبایی لەدایکبوون
+        </h3>
+        <p style="font-size: 21px; line-height: 2.2; color: #72162e; font-weight: 700; margin-bottom: 24px;">
+          « رەیان گیان، بەڵێن بێت تا دوا هەناسە و دوا ترپەی ئەم دڵە، تەنها و تەنها تۆ شاژنی دڵم بیت، پەناگەی ئارامیت بم و بە هەموو ڕۆحم بتپارێزم. پیرۆز بێت ١٧ی ١١، پیرۆز بێت ئەو ڕۆژەی کە خودا تۆی بەخشی بە ژیانم! تا هەتایە خۆشم دەوێیت... »
+        </p>
+        <div style="font-size: 24px; font-weight: 900; color: #9c173e;">
+          تێبین – هاوسەر و ئاشقی هەمیشەییت 🤍✨
+        </div>
+      </div>
+
+      <div style="margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <button class="liquid-btn liquid-btn-primary" onclick="celebrateSparkles()">
+          <span>تەقاندنەوەی شایی و بارانی کۆنفێتی ✨🎉</span>
+        </button>
+        <button class="liquid-btn" onclick="startClassicMode()">
+          <span>سەردانی پەیجی ئاسایی (ماڵ و ورچی 3D) بکە 🏡</span>
+        </button>
+      </div>
+
+    </div>
   </div>
 
   <!-- =========================================================
@@ -1929,7 +2411,12 @@
     <source src="music.webm" type="audio/webm">
   </audio>
 
-  <!-- Dedicated Birthday Poem Audio (lolo.mp4 / lolo.m4a from Desktop) -->
+  <!-- Dedicated Happy Birthday Instrumental Audio (plays during stages 1-4) -->
+  <audio id="birthday-song-audio" preload="auto" loop playsinline>
+    <source src="birthday_song.m4a" type="audio/mp4">
+  </audio>
+
+  <!-- Dedicated Birthday Poem Audio (lolo.mp4 / lolo.m4a from Desktop, plays after candle blow) -->
   <audio id="birthday-audio" preload="auto" loop playsinline>
     <source src="lolo.mp4" type="audio/mp4">
     <source src="lolo.m4a" type="audio/mp4">
@@ -1941,7 +2428,8 @@
   <script>
     const romanticAudioEl = document.getElementById('romantic-audio');
     const birthdayAudioEl = document.getElementById('birthday-audio');
-    let currentActiveAudio = 'romantic'; // 'romantic' or 'birthday'
+    const birthdaySongAudioEl = document.getElementById('birthday-song-audio');
+    let currentActiveAudio = 'romantic'; // 'romantic', 'birthday_song', 'birthday_poem'
     let isPlaying = false;
     let ytPlayer = null;
 
@@ -1973,9 +2461,9 @@
     }
 
     function startRomanticMusic() {
-      if (birthdayAudioEl) {
-        birthdayAudioEl.pause();
-      }
+      if (birthdayAudioEl) birthdayAudioEl.pause();
+      if (birthdaySongAudioEl) birthdaySongAudioEl.pause();
+
       currentActiveAudio = 'romantic';
       isPlaying = true;
       document.getElementById('audioIcon').innerText = '🔊';
@@ -1998,14 +2486,32 @@
       }
     }
 
+    // Happy birthday song during filling stages 1 to 4
+    function startBirthdaySong() {
+      if (romanticAudioEl) romanticAudioEl.pause();
+      if (birthdayAudioEl) birthdayAudioEl.pause();
+      if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+
+      currentActiveAudio = 'birthday_song';
+      isPlaying = true;
+      document.getElementById('audioIcon').innerText = '🔊';
+
+      if (birthdaySongAudioEl) {
+        birthdaySongAudioEl.loop = true;
+        birthdaySongAudioEl.currentTime = 0;
+        birthdaySongAudioEl.play().catch(err => {
+          console.warn("Autoplay was prevented for birthday song:", err);
+        });
+      }
+    }
+
+    // Poem audio (lolo) playing after blowing out the candle
     function startBirthdayPoemAudio() {
-      if (romanticAudioEl) {
-        romanticAudioEl.pause();
-      }
-      if (ytPlayer && ytPlayer.pauseVideo) {
-        ytPlayer.pauseVideo();
-      }
-      currentActiveAudio = 'birthday';
+      if (birthdaySongAudioEl) birthdaySongAudioEl.pause();
+      if (romanticAudioEl) romanticAudioEl.pause();
+      if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+
+      currentActiveAudio = 'birthday_poem';
       isPlaying = true;
       document.getElementById('audioIcon').innerText = '🔊';
 
@@ -2013,7 +2519,7 @@
         birthdayAudioEl.loop = true;
         birthdayAudioEl.currentTime = 0;
         birthdayAudioEl.play().catch(err => {
-          console.warn("Autoplay was prevented for birthday audio:", err);
+          console.warn("Autoplay was prevented for birthday poem audio:", err);
         });
       }
     }
@@ -2023,12 +2529,15 @@
         isPlaying = false;
         document.getElementById('audioIcon').innerText = '🔈';
         if (romanticAudioEl) romanticAudioEl.pause();
+        if (birthdaySongAudioEl) birthdaySongAudioEl.pause();
         if (birthdayAudioEl) birthdayAudioEl.pause();
         if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
       } else {
         isPlaying = true;
         document.getElementById('audioIcon').innerText = '🔊';
-        if (currentActiveAudio === 'birthday') {
+        if (currentActiveAudio === 'birthday_song') {
+          if (birthdaySongAudioEl) birthdaySongAudioEl.play().catch(console.warn);
+        } else if (currentActiveAudio === 'birthday_poem') {
           if (birthdayAudioEl) birthdayAudioEl.play().catch(console.warn);
         } else {
           startRomanticMusic();
@@ -2046,9 +2555,18 @@
       }, false);
     }
 
+    if (birthdaySongAudioEl) {
+      birthdaySongAudioEl.addEventListener('ended', function() {
+        if (isPlaying && currentActiveAudio === 'birthday_song') {
+          this.currentTime = 0;
+          this.play();
+        }
+      }, false);
+    }
+
     if (birthdayAudioEl) {
       birthdayAudioEl.addEventListener('ended', function() {
-        if (isPlaying && currentActiveAudio === 'birthday') {
+        if (isPlaying && currentActiveAudio === 'birthday_poem') {
           this.currentTime = 0;
           this.play();
         }
@@ -2064,7 +2582,7 @@
        COUNTDOWN TIMER UNTIL MIDNIGHT TONIGHT (17-11)
     ========================================================== */
     // Target is midnight tonight: November 17, 2026 00:00:00 (+03:00 Kurdistan time)
-    const targetBirthdayTime = new Date('2026-11-17T00:00:00+03:00').getTime();
+    const targetBirthdayTime = new Date('2026-11-17T00:55:00+03:00').getTime();
     let isCountdownLocked = true;
 
     function updateCountdownTimer() {
@@ -2108,12 +2626,12 @@
 
     let noClickCount = 0;
     const noButtonTexts = [
-      "دووبارە بیر بکەوە... خۆ بێ کێک نابێت! 🎂🙈",
-      "سێ بارە بیر بکەوە... خۆ دەزانم چەندە دڵت پێی خۆشە! 🥺",
-      "چوار بارە بیر بکەوە... مەیلی شاییت نییە بەڕاستی؟! 💃😂",
-      "پێنج بارە بیر بکەوە... بێ شایی و دیاری ناڕۆین! 🎁✨",
-      "شەش بارە بیر بکەوە... هیچ دەربازبوون نییە رەیان گیان! 🌸",
-      "دڵم تەنها بۆ تۆیە، کلیک لە با بەرز بینرخێنین بکە! 🎉❤️"
+      "دووبارە بیر بکەوە... خۆ ناتوانی بێ من بژیت! 🙈❤️",
+      "سێ بارە بیر بکەوە... دڵم ئەشکێ ها! 🥺💔",
+      "چوار بارە بیر بکەوە... خۆ دەزانم چەندە خۆشت دەوێم! 🌸",
+      "پێنج بارە بیر بکەوە... هیچ دەربازبوون نییە رەیان گیان! 😂💃",
+      "شەش بارە بیر بکەوە... هەموو ڕێگاکان هەر بەرەو باوەشی منن! ✨",
+      "دڵم تەنها بۆ تۆ لێدەدات، کلیک لە بەڵێ بکە! ❤️🎉"
     ];
 
     function handleNoClick() {
@@ -2512,6 +3030,27 @@
       if (curtain) curtain.classList.add('opened');
 
       celebrateSparkles();
+    }
+
+    function showGrandBirthdayLetterScreen() {
+      celebrateSparkles();
+      const letterScreen = document.getElementById('grand-birthday-letter-screen');
+      if (letterScreen) {
+        letterScreen.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function returnFromGrandLetter() {
+      const letterScreen = document.getElementById('grand-birthday-letter-screen');
+      if (letterScreen) {
+        letterScreen.classList.remove('active');
+      }
+      const modeModal = document.getElementById('mode-selection-modal');
+      if (modeModal) {
+        modeModal.classList.remove('hidden');
+        modeModal.style.display = 'flex';
+      }
     }
 
     function selectBabyName(element, name) {
@@ -4063,6 +4602,15 @@
             container.appendChild(badge);
           }, i * 160);
         });
+      }
+
+      // Reveal the button to grand letter screen
+      const nextLetterWrapper = document.getElementById('next-to-letter-btn-wrapper');
+      if (nextLetterWrapper) {
+        setTimeout(() => {
+          nextLetterWrapper.style.display = 'flex';
+          nextLetterWrapper.scrollIntoView({ behavior: 'smooth' });
+        }, 1200);
       }
     }
 
