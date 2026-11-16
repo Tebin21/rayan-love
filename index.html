@@ -822,6 +822,465 @@
     }
 
     /* ==========================================================
+       MODE SELECTION & BIRTHDAY EXPERIENCE STYLING
+    ========================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, rgba(255, 245, 248, 0.9) 0%, rgba(252, 228, 236, 0.96) 100%);
+      backdrop-filter: blur(24px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.95);
+      visibility: hidden;
+    }
+
+    .mode-card {
+      width: 90%;
+      max-width: 820px;
+      padding: 50px 40px;
+      text-align: center;
+      animation: floatSlow 6s ease-in-out infinite alternate;
+    }
+
+    .mode-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .mode-option-card {
+      padding: 32px 24px;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.6);
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .mode-option-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      border-color: #ff6b8b;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 20px 45px -8px rgba(255, 107, 139, 0.35);
+    }
+
+    .mode-icon {
+      font-size: 52px;
+      margin-bottom: 4px;
+    }
+
+    .mode-option-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #72162e;
+    }
+
+    .mode-option-card p {
+      font-size: 15px;
+      color: #8c4257;
+      line-height: 1.6;
+    }
+
+    /* Birthday Experience Container */
+    .birthday-container {
+      position: relative;
+      z-index: 20;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 24px 120px;
+      transition: all 0.8s ease;
+    }
+
+    .birthday-container.hidden {
+      display: none;
+    }
+
+    .birthday-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .bday-stage-card {
+      padding: 50px 36px;
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeIn 0.6s forwards;
+    }
+
+    .bday-stage-card.hidden {
+      display: none;
+    }
+
+    .bday-stage-title {
+      font-size: 36px;
+      font-weight: 900;
+      color: #72162e;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+
+    .bday-stage-desc {
+      font-size: 19px;
+      color: #8c3b52;
+      line-height: 1.7;
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+
+    .bday-options-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .bday-choice-btn {
+      padding: 24px 38px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      min-width: 200px;
+      border-radius: 26px;
+    }
+
+    .bday-advice-box {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: rgba(255, 240, 245, 0.9);
+      border: 1.5px dashed #ff4d6d;
+      border-radius: 22px;
+      color: #8c253e;
+      font-size: 17px;
+      line-height: 1.7;
+      animation: fadeIn 0.4s;
+    }
+
+    .bday-advice-box.hidden {
+      display: none;
+    }
+
+    /* Love Meter Styles */
+    .love-meter-wrapper {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto 30px;
+      position: relative;
+    }
+
+    .love-meter-gauge {
+      width: 100%;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 30px;
+      border: 2px solid rgba(255, 107, 139, 0.4);
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .love-meter-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff758f 0%, #ff4d6d 50%, #e63946 100%);
+      border-radius: 30px;
+      box-shadow: 0 0 16px rgba(255, 77, 109, 0.6);
+      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .love-meter-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #72162e;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+      pointer-events: none;
+    }
+
+    .love-tap-btn {
+      padding: 20px 42px;
+      font-size: 20px;
+      transform: scale(1);
+      transition: all 0.15s ease;
+    }
+
+    .love-tap-btn:active {
+      transform: scale(0.95);
+    }
+
+    .love-toast {
+      margin-top: 24px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #ba265d;
+      animation: fadeIn 0.4s;
+    }
+
+    .love-toast.hidden {
+      display: none;
+    }
+
+    /* X-O Game Styles */
+    .xo-board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 12px;
+      justify-content: center;
+      margin: 24px auto;
+    }
+
+    .xo-cell {
+      background: rgba(255, 255, 255, 0.65);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 18px rgba(220, 130, 155, 0.15);
+      user-select: none;
+    }
+
+    .xo-cell:hover:empty {
+      background: rgba(255, 255, 255, 0.95);
+      transform: scale(1.05);
+      border-color: #ff6b8b;
+    }
+
+    .xo-cell.hint-cell {
+      border-color: #ffd700 !important;
+      background: rgba(255, 235, 150, 0.4) !important;
+      box-shadow: 0 0 20px #ffd700 !important;
+      animation: pulseGlow 1s infinite alternate;
+    }
+
+    .xo-result-msg {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #ba265d;
+    }
+
+    .xo-result-msg.hidden {
+      display: none;
+    }
+
+    /* Candle Stage Styles */
+    .candle-stage-box {
+      width: 100%;
+      max-width: 460px;
+      height: 380px;
+      margin: 10px auto 28px;
+      position: relative;
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #candle-3d-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .candle-action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .candle-msg {
+      margin-top: 32px;
+      padding: 26px;
+      background: rgba(255, 240, 245, 0.85);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 107, 139, 0.4);
+      animation: fadeIn 0.6s;
+    }
+
+    .candle-msg.hidden {
+      display: none;
+    }
+
+    /* Theater Curtain Stage */
+    .theater-stage {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      height: 420px;
+      margin: 10px auto 20px;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(186, 38, 93, 0.22);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      background: radial-gradient(circle at center, rgba(255, 245, 248, 0.98), rgba(252, 228, 236, 0.9));
+    }
+
+    .curtain-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      cursor: pointer;
+      display: flex;
+      transition: opacity 0.8s ease;
+    }
+
+    .curtain {
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, #ba265d 0%, #8c1d42 50%, #68112e 100%);
+      background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0px, rgba(255, 255, 255, 0.12) 15px, rgba(0, 0, 0, 0.18) 15px, rgba(0, 0, 0, 0.18) 30px);
+      box-shadow: inset 0 -10px 30px rgba(0,0,0,0.35);
+      transition: transform 1.3s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .curtain-left {
+      transform-origin: left center;
+      border-right: 3px solid #ffd700;
+    }
+
+    .curtain-right {
+      transform-origin: right center;
+      border-left: 3px solid #ffd700;
+    }
+
+    .curtain-container.opened .curtain-left {
+      transform: translateX(-96%) scaleX(0.2);
+    }
+
+    .curtain-container.opened .curtain-right {
+      transform: translateX(96%) scaleX(0.2);
+    }
+
+    .curtain-container.opened {
+      pointer-events: none;
+    }
+
+    .curtain-pull-pill {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.96);
+      color: #72162e;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      border: 2px solid #ffd700;
+      pointer-events: none;
+      animation: pulseGlow 1.5s infinite alternate;
+      z-index: 12;
+      transition: opacity 0.5s ease;
+      white-space: nowrap;
+    }
+
+    .curtain-container.opened .curtain-pull-pill {
+      opacity: 0;
+    }
+
+    /* Gift Box Stage Styles */
+    .gift-stage-box {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #gift-3d-canvas {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .gift-open-hint {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #ba265d;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 6px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 107, 139, 0.4);
+      pointer-events: none;
+      font-weight: 700;
+      animation: bounce 2s infinite;
+    }
+
+    .floating-words-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .floating-word-badge {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 230, 238, 0.9));
+      border: 1px solid rgba(255, 107, 139, 0.5);
+      color: #9c2244;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(255, 107, 139, 0.25);
+      animation: popBadge 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: scale(0.6);
+    }
+
+    @keyframes popBadge {
+      0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* ==========================================================
        RESPONSIVENESS (MOBILE & TABLET ADAPTATION)
     ========================================================== */
     @media (max-width: 1024px) {
@@ -907,6 +1366,208 @@
         </button>
       </div>
     </div>
+  </div>
+
+  <!-- =========================================================
+       MODE SELECTION MODAL (ڕۆژی لەدایکبوون یان ئاسایی)
+  ========================================================== -->
+  <div id="mode-selection-modal" class="modal-overlay hidden">
+    <div class="liquid-glass mode-card">
+      <div class="cute-tag">هەڵبژاردنی گەشتەکەمان 🌸✨</div>
+      <h2 style="font-size: 34px; font-weight: 900; color: #72162e; margin-bottom: 12px;">
+        کامیان هەڵدەبژێریت رەیانەکەم؟
+      </h2>
+      <p style="font-size: 18px; color: #8c3b52; line-height: 1.6; margin-bottom: 32px;">
+        دوو جیهانی پڕ لە خۆشەویستیم بۆ ئامادە کردوویت، کامیانت پێ خۆشە سەرەتا بیکەینەوە؟
+      </p>
+
+      <div class="mode-cards-grid">
+        <!-- Option 1: Birthday Experience -->
+        <div class="liquid-glass mode-option-card" onclick="startBirthdayMode()">
+          <div class="mode-icon">🎂✨</div>
+          <h3>گەشتی ڕۆژی لەدایکبوون</h3>
+          <p>مۆم و فووکردن، ڕێژەی خۆشەویستی، یاری X-O، و دیاری بۆکسی 3D بە شیعری تایبەت!</p>
+          <button class="liquid-btn liquid-btn-primary" style="margin-top: 14px; width: 100%;">
+            <span>ڕۆژی لەدایکبوون دەستپێبکە</span>
+            <span>🎉</span>
+          </button>
+        </div>
+
+        <!-- Option 2: Classic / Normal Romantic Experience -->
+        <div class="liquid-glass mode-option-card" onclick="startClassicMode()">
+          <div class="mode-icon">🏡❤️</div>
+          <h3>گەشتی ئاسایی و ڕۆمانسی</h3>
+          <p>ورچی 3D، ماڵە داهاتووەکەمان، ناوی منداڵەکان، لەباوەشگرتن، و تاقیکردنەوەی عەشق!</p>
+          <button class="liquid-btn" style="margin-top: 14px; width: 100%;">
+            <span>پەیجی ئاسایی بکەرەوە</span>
+            <span>🤍</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SPECIAL BIRTHDAY EXPERIENCE (گەشتی ڕۆژی لەدایکبوونی رەیان)
+  ========================================================== -->
+  <div id="birthday-experience" class="birthday-container hidden">
+
+    <!-- Top Return / Navigation bar for Birthday mode -->
+    <div class="birthday-top-bar">
+      <button class="liquid-btn" style="padding: 10px 20px; font-size: 15px;" onclick="returnToModeSelector()">
+        <span>← گۆڕینی گەشتەکە</span>
+      </button>
+      <div class="cute-tag" style="margin: 0;">ئاهەنگی لەدایکبوونی شازادە رەیان 👑🎂</div>
+    </div>
+
+    <!-- STAGE 1: BIRTHDAY DATE QUESTION -->
+    <div class="bday-stage-card liquid-glass" id="bday-stage-1">
+      <div class="cute-tag">قۆناغی ١ لە ٥ 🌸</div>
+      <h2 class="bday-stage-title">کەی ڕۆژی لەدایکبوونی رەیانە؟</h2>
+      <p class="bday-stage-desc">
+        جوانترین و پیرۆزترین ڕۆژێک کە خودا تۆی بەخشی بە دڵ و ژیانی من...
+      </p>
+
+      <div class="bday-options-row">
+        <!-- Correct Answer -->
+        <button class="liquid-btn bday-choice-btn" onclick="handleBdayDateAnswer(true)">
+          <span style="font-size: 26px; font-weight: 900; color: #ba265d;">١٧ - ١١</span>
+          <span style="font-size: 15px; opacity: 0.85;">(17ی تشرینی دووەم) ❤️</span>
+        </button>
+
+        <!-- Wrong Answer -->
+        <button class="liquid-btn bday-choice-btn" onclick="handleBdayDateAnswer(false)">
+          <span style="font-size: 26px; font-weight: 900; color: #72162e;">١٥ - ١٠</span>
+          <span style="font-size: 15px; opacity: 0.85;">(15ی تشرینی یەکەم) 🙈</span>
+        </button>
+      </div>
+
+      <div id="bday-advice-box" class="bday-advice-box hidden">
+        <!-- Sweet advice appears here if wrong -->
+      </div>
+    </div>
+
+    <!-- STAGE 2: LOVE METER (100% REQUIRED) -->
+    <div class="bday-stage-card liquid-glass hidden" id="bday-stage-2">
+      <div class="cute-tag">قۆناغی ٢ لە ٥ 💖</div>
+      <h2 class="bday-stage-title">ڕێژەی خۆشەویستی رەیان بۆ تێبین</h2>
+      <p class="bday-stage-desc">
+        دەبێ بە خێرایی پەنجە بنێیت تا دەگاتە ١٠٠٪، چونکە بە کەمتر لەوە ڕازی نابین! 🙈❤️
+      </p>
+
+      <div class="love-meter-wrapper">
+        <div class="love-meter-gauge">
+          <div class="love-meter-fill" id="love-meter-fill"></div>
+          <div class="love-meter-text" id="love-meter-percent">0%</div>
+        </div>
+      </div>
+
+      <button class="liquid-btn liquid-btn-primary love-tap-btn" id="loveTapBtn" onclick="tapLoveMeter()">
+        <span>پەنجە بنێ بە خێرایی بۆ زیادکردنی خۆشەویستی 💓</span>
+      </button>
+
+      <div id="love-meter-toast" class="love-toast hidden">
+        « ١٠٠٪ تەواو! تۆ هەموو دڵ و ژیانی تێبینیت... ئەوە پەسەندکرا! ❤️🎉 »
+      </div>
+    </div>
+
+    <!-- STAGE 3: TIC-TAC-TOE GAME WITH BOT & HELPER -->
+    <div class="bday-stage-card liquid-glass hidden" id="bday-stage-3">
+      <div class="cute-tag">قۆناغی ٣ لە ٥ 🎮</div>
+      <h2 class="bday-stage-title">یاری X-O: رەیان دژی تێبین-بۆت 🤖💖</h2>
+      <p class="bday-stage-desc">
+        دەبێ لەم یارییەدا بیبەیتەوە تا کلیلی مۆمەکە بەدەست بهێنیت! هەمیشە دەتوانیت یارمەتیدەری زیرەک بەکاربێنیت:
+      </p>
+
+      <div class="xo-board" id="xo-board">
+        <!-- 9 cells -->
+      </div>
+
+      <div style="display: flex; gap: 14px; justify-content: center; margin-top: 20px;">
+        <button class="liquid-btn" style="padding: 10px 22px; font-size: 15px;" onclick="useXOHelper()">
+          <span>💡 یارمەتیدەری زیرەک</span>
+        </button>
+        <button class="liquid-btn" style="padding: 10px 22px; font-size: 15px;" onclick="resetXOGame()">
+          <span>دەستپێکردنەوە 🔄</span>
+        </button>
+      </div>
+
+      <div id="xo-result-msg" class="xo-result-msg hidden"></div>
+    </div>
+
+    <!-- STAGE 4: 3D CANDLE WITH BLOW DETECTION & POEM AUDIO -->
+    <div class="bday-stage-card liquid-glass hidden" id="bday-stage-4">
+      <div class="cute-tag">قۆناغی ٤ لە ٥ 🎂🕯️</div>
+      <h2 class="bday-stage-title">ئاواتێک بخوازە و فوو لە مۆمەکە بکە!</h2>
+      <p class="bday-stage-desc">
+        لە دڵتدا ئاواتێکی شیرین بخوازە بۆ ژیانی هاوبەشمان... دەتوانیت مایک بەکاربێنیت و فووی تێبکەیت یان دوگمەکە دابگریت تا مۆمەکە بکوژێتەوە:
+      </p>
+
+      <!-- 3D Candle Container -->
+      <div class="candle-stage-box" id="candle-stage-box">
+        <div id="candle-3d-canvas"></div>
+      </div>
+
+      <div class="candle-action-buttons">
+        <button class="liquid-btn" id="micBlowBtn" onclick="startMicDetection()">
+          <span id="micIcon">🎙️</span>
+          <span>چالاککردنی مایک بۆ فووکردن</span>
+        </button>
+
+        <button class="liquid-btn liquid-btn-primary" onclick="blowOutCandleDirect()">
+          <span>فووی لێبکە 💨</span>
+        </button>
+      </div>
+
+      <div id="candle-blown-msg" class="candle-msg hidden">
+        <div style="font-size: 42px; margin-bottom: 10px;">✨🤍🕊️</div>
+        <h3 style="font-size: 26px; color: #ba265d; font-weight: 800; margin-bottom: 10px;">
+          ئاواتەکەت بەدی بێت تاقانەی دڵم!
+        </h3>
+        <p style="font-size: 18px; color: #72162e; line-height: 1.8;">
+          مۆمەکە کوژایەوە... گوێ لەم دەنگ و شیعرە تایبەتە بگرە کە بە تایبەت بۆ ڕۆژی لەدایکبوونت ئامادەکراوە ❤️
+        </p>
+      </div>
+    </div>
+
+    <!-- STAGE 5: CURTAIN & 3D GIFT BOX EXPLOSION -->
+    <div class="bday-stage-card liquid-glass hidden" id="bday-stage-5">
+      <div class="cute-tag">دیاری تایبەتی تێبین بۆ رەیان 🎁✨</div>
+      <h2 class="bday-stage-title">پەردەی ئاهەنگ بکەرەوە و دیارییەکەت ببینە!</h2>
+      <p class="bday-stage-desc">
+        دەست لە پەردەکە بدە تا دیارییە 3D-ە تایبەتەکەت پێشکەش بکرێت، پاشان کلیک لەسەر بۆکسەکە بکە:
+      </p>
+
+      <!-- Theater Stage with Interactive Velvet Curtains -->
+      <div class="theater-stage" id="theater-stage">
+        <div class="curtain-container" id="curtain-container" onclick="openCurtains()">
+          <div class="curtain curtain-left"></div>
+          <div class="curtain curtain-right"></div>
+          <div class="curtain-pull-pill" id="curtainPullPill">
+            <span>دەست لە پەردەکە بدە بۆ کردنەوەی 🎭✨</span>
+          </div>
+        </div>
+
+        <!-- 3D Gift Box Stage -->
+        <div class="gift-stage-box" id="gift-stage-box">
+          <div id="gift-3d-canvas"></div>
+          <div class="gift-open-hint" id="giftOpenHint">کلیک لەسەر دیارییەکە بکە تا بکرێتەوە 🎀</div>
+        </div>
+      </div>
+
+      <!-- Floating Romantic Words Container after Explosion -->
+      <div id="floating-words-container" class="floating-words-cloud"></div>
+
+      <div class="final-bday-actions" style="margin-top: 36px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <button class="liquid-btn liquid-btn-primary" onclick="startClassicMode()">
+          <span>سەردانی پەیجی ئاسایی (ماڵ و ورچی 3D) بکە 🏡</span>
+        </button>
+        <button class="liquid-btn" onclick="celebrateSparkles()">
+          <span>تەقاندنەوەی شایی و کۆنفێتی ✨</span>
+        </button>
+      </div>
+    </div>
+
   </div>
 
   <!-- =========================================================
@@ -1092,15 +1753,23 @@
     <source src="music.webm" type="audio/webm">
   </audio>
 
+  <!-- Dedicated Birthday Poem Audio (lolo.mp4 / lolo.m4a from Desktop) -->
+  <audio id="birthday-audio" preload="auto" loop playsinline>
+    <source src="lolo.mp4" type="audio/mp4">
+    <source src="lolo.m4a" type="audio/mp4">
+  </audio>
+
   <!-- Hidden YouTube Player Container as Seamless Online Fallback -->
   <div id="yt-player-container" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; overflow: hidden;"></div>
 
   <script>
-    const audioEl = document.getElementById('romantic-audio');
+    const romanticAudioEl = document.getElementById('romantic-audio');
+    const birthdayAudioEl = document.getElementById('birthday-audio');
+    let currentActiveAudio = 'romantic'; // 'romantic' or 'birthday'
     let isPlaying = false;
     let ytPlayer = null;
 
-    // Load YouTube IFrame API as fallback
+    // Load YouTube IFrame API as fallback for romantic song
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -1119,7 +1788,7 @@
         },
         events: {
           'onStateChange': function(event) {
-            if (event.data === YT.PlayerState.ENDED && isPlaying) {
+            if (event.data === YT.PlayerState.ENDED && isPlaying && currentActiveAudio === 'romantic') {
               ytPlayer.playVideo(); // Endless loop replay
             }
           }
@@ -1128,12 +1797,16 @@
     }
 
     function startRomanticMusic() {
+      if (birthdayAudioEl) {
+        birthdayAudioEl.pause();
+      }
+      currentActiveAudio = 'romantic';
       isPlaying = true;
       document.getElementById('audioIcon').innerText = '🔊';
 
-      if (audioEl) {
-        audioEl.loop = true;
-        const playPromise = audioEl.play();
+      if (romanticAudioEl) {
+        romanticAudioEl.loop = true;
+        const playPromise = romanticAudioEl.play();
         if (playPromise !== undefined) {
           playPromise.then(() => {
             console.log("Playing local Golden Brown audio with continuous loop");
@@ -1149,29 +1822,57 @@
       }
     }
 
+    function startBirthdayPoemAudio() {
+      if (romanticAudioEl) {
+        romanticAudioEl.pause();
+      }
+      if (ytPlayer && ytPlayer.pauseVideo) {
+        ytPlayer.pauseVideo();
+      }
+      currentActiveAudio = 'birthday';
+      isPlaying = true;
+      document.getElementById('audioIcon').innerText = '🔊';
+
+      if (birthdayAudioEl) {
+        birthdayAudioEl.loop = true;
+        birthdayAudioEl.currentTime = 0;
+        birthdayAudioEl.play().catch(err => {
+          console.warn("Autoplay was prevented for birthday audio:", err);
+        });
+      }
+    }
+
     function toggleAudio() {
       if (isPlaying) {
         isPlaying = false;
         document.getElementById('audioIcon').innerText = '🔈';
-        if (audioEl) audioEl.pause();
+        if (romanticAudioEl) romanticAudioEl.pause();
+        if (birthdayAudioEl) birthdayAudioEl.pause();
         if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
       } else {
         isPlaying = true;
         document.getElementById('audioIcon').innerText = '🔊';
-        if (audioEl) {
-          audioEl.play().catch(() => {
-            if (ytPlayer && ytPlayer.playVideo) ytPlayer.playVideo();
-          });
-        } else if (ytPlayer && ytPlayer.playVideo) {
-          ytPlayer.playVideo();
+        if (currentActiveAudio === 'birthday') {
+          if (birthdayAudioEl) birthdayAudioEl.play().catch(console.warn);
+        } else {
+          startRomanticMusic();
         }
       }
     }
 
     // Ensure 100% endless loop replay
-    if (audioEl) {
-      audioEl.addEventListener('ended', function() {
-        if (isPlaying) {
+    if (romanticAudioEl) {
+      romanticAudioEl.addEventListener('ended', function() {
+        if (isPlaying && currentActiveAudio === 'romantic') {
+          this.currentTime = 0;
+          this.play();
+        }
+      }, false);
+    }
+
+    if (birthdayAudioEl) {
+      birthdayAudioEl.addEventListener('ended', function() {
+        if (isPlaying && currentActiveAudio === 'birthday') {
           this.currentTime = 0;
           this.play();
         }
@@ -1216,17 +1917,379 @@
       // 1. Launch Fireworks Confetti
       celebrateSparkles();
 
-      // 2. Start romantic music
-      startRomanticMusic();
-
-      // 3. Fade out overlay and reveal main wonderland
+      // 2. Fade out overlay and reveal Mode Selection Modal
       const overlay = document.getElementById('proposal-overlay');
       overlay.classList.add('hidden');
 
       setTimeout(() => {
         overlay.style.display = 'none';
-        document.getElementById('main-experience').classList.add('visible');
-      }, 900);
+        const modeModal = document.getElementById('mode-selection-modal');
+        modeModal.classList.remove('hidden');
+      }, 650);
+    }
+
+    function startClassicMode() {
+      celebrateSparkles();
+      document.getElementById('mode-selection-modal').classList.add('hidden');
+      document.getElementById('birthday-experience').classList.add('hidden');
+
+      if (birthdayAudioEl) birthdayAudioEl.pause();
+      startRomanticMusic();
+
+      const mainExp = document.getElementById('main-experience');
+      mainExp.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startBirthdayMode() {
+      celebrateSparkles();
+      document.getElementById('mode-selection-modal').classList.add('hidden');
+      document.getElementById('main-experience').classList.remove('visible');
+
+      if (romanticAudioEl) romanticAudioEl.pause();
+      if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+      isPlaying = false;
+      document.getElementById('audioIcon').innerText = '🔈';
+
+      resetBirthdayJourney();
+
+      const bdayExp = document.getElementById('birthday-experience');
+      bdayExp.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function returnToModeSelector() {
+      if (romanticAudioEl) romanticAudioEl.pause();
+      if (birthdayAudioEl) birthdayAudioEl.pause();
+      if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+      isPlaying = false;
+      document.getElementById('audioIcon').innerText = '🔈';
+
+      document.getElementById('birthday-experience').classList.add('hidden');
+      document.getElementById('main-experience').classList.remove('visible');
+      document.getElementById('mode-selection-modal').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetBirthdayJourney() {
+      document.getElementById('bday-stage-1').classList.remove('hidden');
+      document.getElementById('bday-stage-2').classList.add('hidden');
+      document.getElementById('bday-stage-3').classList.add('hidden');
+      document.getElementById('bday-stage-4').classList.add('hidden');
+      document.getElementById('bday-stage-5').classList.add('hidden');
+      document.getElementById('bday-advice-box').classList.add('hidden');
+
+      lovePercent = 0;
+      updateLoveMeter();
+      document.getElementById('love-meter-toast').classList.add('hidden');
+      document.getElementById('loveTapBtn').disabled = false;
+
+      resetXOGame();
+
+      isCandleExtinguished = false;
+      document.getElementById('candle-blown-msg').classList.add('hidden');
+
+      isCurtainOpened = false;
+      isGiftOpened = false;
+      const curtain = document.getElementById('curtain-container');
+      if (curtain) curtain.classList.remove('opened');
+      const hint = document.getElementById('giftOpenHint');
+      if (hint) { hint.style.display = 'block'; hint.innerText = 'کلیک لەسەر دیارییەکە بکە تا بکرێتەوە 🎀'; }
+      const words = document.getElementById('floating-words-container');
+      if (words) words.innerHTML = '';
+    }
+
+    /* ---------------------------------------------------------
+       STAGE 1: BIRTHDAY DATE QUIZ
+    ---------------------------------------------------------- */
+    function handleBdayDateAnswer(isCorrect) {
+      const adviceBox = document.getElementById('bday-advice-box');
+      if (isCorrect) {
+        celebrateSparkles();
+        adviceBox.classList.add('hidden');
+
+        setTimeout(() => {
+          document.getElementById('bday-stage-1').classList.add('hidden');
+          document.getElementById('bday-stage-2').classList.remove('hidden');
+          lovePercent = 0;
+          updateLoveMeter();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 600);
+      } else {
+        adviceBox.innerHTML = `
+          <div style="font-size: 28px; margin-bottom: 6px;">🙈🌸❤️</div>
+          <p style="font-weight: 800; font-size: 19px; color: #ba265d; margin-bottom: 8px;">ئای رەیانە نازدارەکەم... مەگەر دەکرێت جوانترین ڕۆژی ساڵ لە بیر بکەیت؟</p>
+          <p style="font-size: 17px; line-height: 1.8;">ڕۆژی هاتنە دنیای تۆ ١٧ی مانگی ١١یە (١٧ - ١١) کە تێدا خودا گەورەترین دیاری پێ بەخشیم...<br>تکایە وەڵامە دروستەکە هەڵبژێرە با بڕۆینە قۆناغی داهاتوو! ✨</p>
+        `;
+        adviceBox.classList.remove('hidden');
+        confetti({
+          particleCount: 25,
+          spread: 50,
+          origin: { y: 0.7 },
+          colors: ['#ffccd5', '#ff4d6d']
+        });
+      }
+    }
+
+    /* ---------------------------------------------------------
+       STAGE 2: LOVE METER (100% REQUIRED)
+    ---------------------------------------------------------- */
+    let lovePercent = 0;
+    function updateLoveMeter() {
+      const fill = document.getElementById('love-meter-fill');
+      const text = document.getElementById('love-meter-percent');
+      if (fill) fill.style.width = lovePercent + '%';
+      if (text) text.innerText = lovePercent + '%';
+    }
+
+    function tapLoveMeter() {
+      if (lovePercent >= 100) return;
+
+      lovePercent = Math.min(100, lovePercent + 10);
+      updateLoveMeter();
+
+      confetti({
+        particleCount: 15,
+        spread: 45,
+        origin: { y: 0.65 },
+        colors: ['#ff0055', '#ff758c', '#ffffff']
+      });
+
+      if (lovePercent === 100) {
+        celebrateSparkles();
+        const toast = document.getElementById('love-meter-toast');
+        toast.classList.remove('hidden');
+        document.getElementById('loveTapBtn').disabled = true;
+
+        setTimeout(() => {
+          document.getElementById('bday-stage-2').classList.add('hidden');
+          document.getElementById('bday-stage-3').classList.remove('hidden');
+          initXOGame();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 1600);
+      }
+    }
+
+    /* ---------------------------------------------------------
+       STAGE 3: TIC-TAC-TOE GAME (X-O)
+    ---------------------------------------------------------- */
+    let xoBoard = Array(9).fill(null);
+    let xoTurn = 'player';
+    let xoGameOver = false;
+
+    const xoWinLines = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
+    ];
+
+    function initXOGame() {
+      resetXOGame();
+    }
+
+    function resetXOGame() {
+      xoBoard = Array(9).fill(null);
+      xoTurn = 'player';
+      xoGameOver = false;
+      const resultMsg = document.getElementById('xo-result-msg');
+      resultMsg.classList.add('hidden');
+      resultMsg.innerHTML = '';
+      renderXOBoard();
+    }
+
+    function renderXOBoard() {
+      const boardEl = document.getElementById('xo-board');
+      if (!boardEl) return;
+      boardEl.innerHTML = '';
+      xoBoard.forEach((cellVal, idx) => {
+        const cell = document.createElement('div');
+        cell.className = 'xo-cell';
+        cell.id = `xo-cell-${idx}`;
+        cell.innerText = cellVal ? cellVal : '';
+        cell.onclick = () => onXOCellClick(idx);
+        boardEl.appendChild(cell);
+      });
+    }
+
+    function onXOCellClick(idx) {
+      if (xoGameOver || xoBoard[idx] || xoTurn !== 'player') return;
+
+      document.querySelectorAll('.xo-cell').forEach(c => c.classList.remove('hint-cell'));
+
+      xoBoard[idx] = '❤️';
+      renderXOBoard();
+
+      if (checkXOWin('❤️')) {
+        handleXOVictory();
+        return;
+      }
+
+      if (xoBoard.every(c => c !== null)) {
+        handleXODraw();
+        return;
+      }
+
+      xoTurn = 'bot';
+      setTimeout(botMoveXO, 450);
+    }
+
+    function botMoveXO() {
+      if (xoGameOver) return;
+
+      const emptyIndices = xoBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
+      if (emptyIndices.length === 0) return;
+
+      let chosen = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+
+      xoBoard[chosen] = '🤍';
+      renderXOBoard();
+
+      if (checkXOWin('🤍')) {
+        xoGameOver = true;
+        const resultMsg = document.getElementById('xo-result-msg');
+        resultMsg.classList.remove('hidden');
+        resultMsg.innerText = 'تێبین-بۆت بردیەوە! کلیک لە دەستپێکردنەوە بکە با ئەمجارە تۆ بیبەیتەوە 🌸';
+        return;
+      }
+
+      if (xoBoard.every(c => c !== null)) {
+        handleXODraw();
+        return;
+      }
+
+      xoTurn = 'player';
+    }
+
+    function checkXOWin(symbol) {
+      return xoWinLines.some(line => line.every(idx => xoBoard[idx] === symbol));
+    }
+
+    function handleXOVictory() {
+      xoGameOver = true;
+      celebrateSparkles();
+      const resultMsg = document.getElementById('xo-result-msg');
+      resultMsg.classList.remove('hidden');
+      resultMsg.innerHTML = '« پیرۆزە شاژنەکەم! تۆ بردتەوە! ئێستا مۆمەکە ئامادەیە تا فووی لێ بکەیت 🕯️🎂✨ »';
+
+      setTimeout(() => {
+        document.getElementById('bday-stage-3').classList.add('hidden');
+        document.getElementById('bday-stage-4').classList.remove('hidden');
+        if (typeof initCandle3D === 'function') {
+          initCandle3D();
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 1600);
+    }
+
+    function handleXODraw() {
+      xoGameOver = true;
+      const resultMsg = document.getElementById('xo-result-msg');
+      resultMsg.classList.remove('hidden');
+      resultMsg.innerText = 'یەکسان بوون! کلیک لە دەستپێکردنەوە یان یارمەتیدەر بکە 🌸';
+    }
+
+    function useXOHelper() {
+      if (xoGameOver || xoTurn !== 'player') return;
+
+      let bestMove = -1;
+      for (const line of xoWinLines) {
+        const counts = { player: 0, empty: 0, emptyIdx: -1 };
+        line.forEach(idx => {
+          if (xoBoard[idx] === '❤️') counts.player++;
+          else if (xoBoard[idx] === null) { counts.empty++; counts.emptyIdx = idx; }
+        });
+        if (counts.player === 2 && counts.empty === 1) {
+          bestMove = counts.emptyIdx;
+          break;
+        }
+      }
+
+      if (bestMove === -1) {
+        if (xoBoard[4] === null) bestMove = 4;
+        else bestMove = xoBoard.findIndex(c => c === null);
+      }
+
+      if (bestMove !== -1) {
+        const cell = document.getElementById(`xo-cell-${bestMove}`);
+        if (cell) cell.classList.add('hint-cell');
+      }
+    }
+
+    /* ---------------------------------------------------------
+       STAGE 4: MIC DETECTION FOR CANDLE
+    ---------------------------------------------------------- */
+    let micStream = null;
+    let audioCtx = null;
+    let micAnalyser = null;
+    let isListeningMic = false;
+
+    async function startMicDetection() {
+      const btn = document.getElementById('micBlowBtn');
+      try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          alert('وێبگەڕەکەت ڕێگە بە مایک نادات، تکایە دوگمەی (فووی لێبکە 💨) دابگرە.');
+          return;
+        }
+        btn.innerHTML = '<span>🎙️</span><span>گوێ دەگرێت... فوو بکە! 💨</span>';
+        btn.style.borderColor = '#ff4d6d';
+        btn.style.boxShadow = '0 0 18px rgba(255, 77, 109, 0.5)';
+
+        micStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const source = audioCtx.createMediaStreamSource(micStream);
+        micAnalyser = audioCtx.createAnalyser();
+        micAnalyser.fftSize = 512;
+        source.connect(micAnalyser);
+        isListeningMic = true;
+
+        checkMicBlow();
+      } catch (err) {
+        console.warn('Microphone permission denied or unavailable:', err);
+        btn.innerHTML = '<span>💨</span><span>دوگمەی فووی لێبکە دابگرە</span>';
+      }
+    }
+
+    function checkMicBlow() {
+      if (!isListeningMic || isCandleExtinguished) return;
+
+      const dataArray = new Uint8Array(micAnalyser.frequencyBinCount);
+      micAnalyser.getByteFrequencyData(dataArray);
+
+      let sum = 0;
+      for (let i = 0; i < dataArray.length; i++) {
+        sum += dataArray[i];
+      }
+      let avg = sum / dataArray.length;
+
+      let lowFreqSum = 0;
+      for (let i = 2; i < 20; i++) {
+        lowFreqSum += dataArray[i];
+      }
+      let lowFreqAvg = lowFreqSum / 18;
+
+      if (avg > 40 || lowFreqAvg > 70) {
+        extinguishCandle3D();
+        return;
+      }
+
+      requestAnimationFrame(checkMicBlow);
+    }
+
+    function blowOutCandleDirect() {
+      extinguishCandle3D();
+    }
+
+    /* ---------------------------------------------------------
+       STAGE 5: CURTAIN INTERACTION
+    ---------------------------------------------------------- */
+    function openCurtains() {
+      if (isCurtainOpened) return;
+      isCurtainOpened = true;
+
+      const curtain = document.getElementById('curtain-container');
+      if (curtain) curtain.classList.add('opened');
+
+      celebrateSparkles();
     }
 
     function selectBabyName(element, name) {
@@ -2336,6 +3399,449 @@
       });
 
       houseRenderer.render(houseScene, houseCamera);
+    }
+
+    /* ---------------------------------------------------------
+       4. 3D CANDLE SCENE (مۆمی ڕۆژی لەدایکبوون بە فوو و دووکەڵ)
+    ---------------------------------------------------------- */
+    let candleScene, candleCamera, candleRenderer;
+    let candleGroup = null, flameMesh = null, flameLight = null;
+    let smokeParticles = [];
+    let isCandleExtinguished = false;
+    let candleInitialized = false;
+
+    function initCandle3D() {
+      const container = document.getElementById('candle-3d-canvas');
+      if (!container) return;
+
+      if (candleInitialized) {
+        if (flameMesh) flameMesh.visible = true;
+        if (flameLight) flameLight.intensity = 2.6;
+        isCandleExtinguished = false;
+        smokeParticles.forEach(s => { s.userData.active = false; s.material.opacity = 0; });
+        return;
+      }
+      candleInitialized = true;
+
+      candleScene = new THREE.Scene();
+      const width = container.clientWidth || 400;
+      const height = container.clientHeight || 360;
+
+      candleCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+      candleCamera.position.set(0, 2.2, 5.5);
+      candleCamera.lookAt(0, 1.3, 0);
+
+      candleRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      candleRenderer.setSize(width, height);
+      candleRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.innerHTML = '';
+      container.appendChild(candleRenderer.domElement);
+
+      // Warm romantic ambient light
+      const ambientLight = new THREE.AmbientLight(0xfff0f5, 0.95);
+      candleScene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.85);
+      dirLight.position.set(5, 10, 7);
+      candleScene.add(dirLight);
+
+      candleGroup = new THREE.Group();
+
+      // Saucer / Plate (Golden trim + pink ceramic)
+      const plateGeo = new THREE.CylinderGeometry(1.65, 1.45, 0.16, 32);
+      const plateMat = new THREE.MeshStandardMaterial({
+        color: 0xffd1dc,
+        roughness: 0.25,
+        metalness: 0.3
+      });
+      const plate = new THREE.Mesh(plateGeo, plateMat);
+      plate.position.y = -0.05;
+      candleGroup.add(plate);
+
+      const rimGeo = new THREE.TorusGeometry(1.55, 0.06, 16, 64);
+      rimGeo.rotateX(Math.PI / 2);
+      const goldMat = new THREE.MeshStandardMaterial({ color: 0xffd700, roughness: 0.2, metalness: 0.8 });
+      const rim = new THREE.Mesh(rimGeo, goldMat);
+      rim.position.y = 0.04;
+      candleGroup.add(rim);
+
+      // Wax Cylinder
+      const waxGeo = new THREE.CylinderGeometry(0.72, 0.72, 2.7, 32);
+      const waxMat = new THREE.MeshStandardMaterial({
+        color: 0xfff0f3,
+        roughness: 0.35,
+        metalness: 0.05
+      });
+      const wax = new THREE.Mesh(waxGeo, waxMat);
+      wax.position.y = 1.35;
+      candleGroup.add(wax);
+
+      // Top rounded rim of wax
+      const waxRimGeo = new THREE.TorusGeometry(0.66, 0.07, 16, 32);
+      waxRimGeo.rotateX(Math.PI / 2);
+      const waxRim = new THREE.Mesh(waxRimGeo, waxMat);
+      waxRim.position.y = 2.7;
+      candleGroup.add(waxRim);
+
+      // Wick
+      const wickGeo = new THREE.CylinderGeometry(0.04, 0.04, 0.35, 8);
+      const wickMat = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.8 });
+      const wick = new THREE.Mesh(wickGeo, wickMat);
+      wick.position.set(0, 2.85, 0);
+      candleGroup.add(wick);
+
+      // Flame
+      const flameGeo = new THREE.SphereGeometry(0.22, 16, 16);
+      flameGeo.scale(0.85, 2.2, 0.85);
+      const flameMat = new THREE.MeshBasicMaterial({ color: 0xffaa00 });
+      flameMesh = new THREE.Mesh(flameGeo, flameMat);
+      flameMesh.position.set(0, 3.25, 0);
+      candleGroup.add(flameMesh);
+
+      // Inner flame core
+      const innerCoreGeo = new THREE.SphereGeometry(0.12, 16, 16);
+      innerCoreGeo.scale(0.8, 1.8, 0.8);
+      const innerCoreMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const innerCore = new THREE.Mesh(innerCoreGeo, innerCoreMat);
+      innerCore.position.set(0, 3.15, 0);
+      flameMesh.add(innerCore);
+
+      // Flame Point Light
+      flameLight = new THREE.PointLight(0xff9900, 2.6, 12);
+      flameLight.position.set(0, 3.25, 0);
+      candleGroup.add(flameLight);
+
+      // Smoke particles setup
+      smokeParticles = [];
+      for (let i = 0; i < 8; i++) {
+        const sGeo = new THREE.SphereGeometry(0.12, 8, 8);
+        const sMat = new THREE.MeshBasicMaterial({ color: 0xbbbbbb, transparent: true, opacity: 0 });
+        const smoke = new THREE.Mesh(sGeo, sMat);
+        smoke.position.set(0, 3.0, 0);
+        smoke.userData = { active: false, vy: 0, vx: 0, life: 0 };
+        candleGroup.add(smoke);
+        smokeParticles.push(smoke);
+      }
+
+      candleScene.add(candleGroup);
+      animateCandle3D();
+    }
+
+    function animateCandle3D() {
+      requestAnimationFrame(animateCandle3D);
+      const time = performance.now() * 0.001;
+
+      if (candleGroup) {
+        candleGroup.rotation.y = Math.sin(time * 0.5) * 0.15;
+      }
+
+      if (flameMesh && !isCandleExtinguished) {
+        const wobble = 1 + Math.sin(time * 18) * 0.08;
+        flameMesh.scale.set(0.85 * wobble, 2.2 * (1 + Math.cos(time * 15) * 0.07), 0.85 * wobble);
+        flameMesh.rotation.z = Math.sin(time * 12) * 0.08;
+        if (flameLight) {
+          flameLight.intensity = 2.4 + Math.sin(time * 20) * 0.4;
+        }
+      }
+
+      // Animate smoke if extinguished
+      smokeParticles.forEach(smoke => {
+        if (smoke.userData.active) {
+          smoke.position.y += smoke.userData.vy;
+          smoke.position.x += smoke.userData.vx;
+          smoke.scale.addScalar(0.015);
+          smoke.userData.life -= 0.016;
+          smoke.material.opacity = Math.max(0, smoke.userData.life * 0.5);
+          if (smoke.userData.life <= 0) {
+            smoke.userData.active = false;
+          }
+        }
+      });
+
+      if (candleRenderer && candleScene && candleCamera) {
+        candleRenderer.render(candleScene, candleCamera);
+      }
+    }
+
+    function extinguishCandle3D() {
+      if (isCandleExtinguished) return;
+      isCandleExtinguished = true;
+
+      // Stop mic if running
+      if (micStream) {
+        micStream.getTracks().forEach(track => track.stop());
+        micStream = null;
+      }
+      isListeningMic = false;
+
+      // Synthesize blow sound
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(140, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.4);
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.4);
+      } catch (e) {}
+
+      // Extinguish visual flame
+      if (flameMesh) flameMesh.visible = false;
+      if (flameLight) flameLight.intensity = 0;
+
+      // Activate rising smoke
+      smokeParticles.forEach((smoke, i) => {
+        smoke.position.set(0, 3.0, 0);
+        smoke.scale.set(1, 1, 1);
+        smoke.material.opacity = 0.6;
+        smoke.userData = {
+          active: true,
+          vy: 0.02 + Math.random() * 0.02,
+          vx: (Math.random() - 0.5) * 0.015,
+          life: 1.0 + (i * 0.15)
+        };
+      });
+
+      // Show blown wish message
+      document.getElementById('candle-blown-msg').classList.remove('hidden');
+
+      // Play dedicated birthday poem audio
+      startBirthdayPoemAudio();
+
+      celebrateSparkles();
+
+      // Transition to Stage 5 (Curtain & 3D Gift Box)
+      setTimeout(() => {
+        document.getElementById('bday-stage-4').classList.add('hidden');
+        document.getElementById('bday-stage-5').classList.remove('hidden');
+        initGift3D();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 3200);
+    }
+
+    /* ---------------------------------------------------------
+       5. 3D GIFT BOX SCENE (بۆکسی دیاری بە تەقینەوەی تۆپ و وشە)
+    ---------------------------------------------------------- */
+    let giftScene, giftCamera, giftRenderer;
+    let giftBoxGroup = null, giftLidGroup = null;
+    let giftBalloons = [];
+    let isCurtainOpened = false;
+    let isGiftOpened = false;
+    let giftInitialized = false;
+
+    function initGift3D() {
+      const container = document.getElementById('gift-3d-canvas');
+      if (!container) return;
+
+      if (giftInitialized) {
+        return;
+      }
+      giftInitialized = true;
+
+      giftScene = new THREE.Scene();
+      const width = container.clientWidth || 460;
+      const height = container.clientHeight || 400;
+
+      giftCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+      giftCamera.position.set(0, 2.5, 6.2);
+      giftCamera.lookAt(0, 0.9, 0);
+
+      giftRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      giftRenderer.setSize(width, height);
+      giftRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.innerHTML = '';
+      container.appendChild(giftRenderer.domElement);
+
+      const ambientLight = new THREE.AmbientLight(0xfff0f5, 1.1);
+      giftScene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+      dirLight.position.set(5, 10, 7);
+      giftScene.add(dirLight);
+
+      giftBoxGroup = new THREE.Group();
+
+      // Base Box (Ruby Pink)
+      const baseMat = new THREE.MeshStandardMaterial({
+        color: 0xd81b60,
+        roughness: 0.25,
+        metalness: 0.25
+      });
+      const baseBox = new THREE.Mesh(new THREE.BoxGeometry(2.2, 1.7, 2.2), baseMat);
+      baseBox.position.y = 0.85;
+      giftBoxGroup.add(baseBox);
+
+      // Gold Ribbon around base
+      const goldRibbonMat = new THREE.MeshStandardMaterial({
+        color: 0xffd700,
+        roughness: 0.2,
+        metalness: 0.7
+      });
+      const ribX = new THREE.Mesh(new THREE.BoxGeometry(2.25, 1.72, 0.45), goldRibbonMat);
+      ribX.position.y = 0.85;
+      giftBoxGroup.add(ribX);
+
+      const ribZ = new THREE.Mesh(new THREE.BoxGeometry(0.45, 1.72, 2.25), goldRibbonMat);
+      ribZ.position.y = 0.85;
+      giftBoxGroup.add(ribZ);
+
+      // Lid Group
+      giftLidGroup = new THREE.Group();
+      giftLidGroup.position.set(0, 1.7, 0);
+
+      const lidMat = new THREE.MeshStandardMaterial({
+        color: 0xe91e63,
+        roughness: 0.2,
+        metalness: 0.3
+      });
+      const lidBox = new THREE.Mesh(new THREE.BoxGeometry(2.35, 0.4, 2.35), lidMat);
+      lidBox.position.y = 0.2;
+      giftLidGroup.add(lidBox);
+
+      const lidRibX = new THREE.Mesh(new THREE.BoxGeometry(2.38, 0.42, 0.47), goldRibbonMat);
+      lidRibX.position.y = 0.2;
+      giftLidGroup.add(lidRibX);
+
+      const lidRibZ = new THREE.Mesh(new THREE.BoxGeometry(0.47, 0.42, 2.38), goldRibbonMat);
+      lidRibZ.position.y = 0.2;
+      giftLidGroup.add(lidRibZ);
+
+      // Bow loops on top of lid
+      const bowMat = new THREE.MeshStandardMaterial({ color: 0xffd700, roughness: 0.2, metalness: 0.7 });
+      for (let b = 0; b < 4; b++) {
+        const loop = new THREE.Mesh(new THREE.TorusGeometry(0.35, 0.1, 16, 32), bowMat);
+        loop.rotation.y = (b * Math.PI) / 2;
+        loop.rotation.x = Math.PI / 4;
+        loop.position.set(0, 0.5, 0);
+        giftLidGroup.add(loop);
+      }
+      const bowCenter = new THREE.Mesh(new THREE.SphereGeometry(0.18, 16, 16), bowMat);
+      bowCenter.position.set(0, 0.5, 0);
+      giftLidGroup.add(bowCenter);
+
+      giftBoxGroup.add(giftLidGroup);
+
+      // 3D Explosion Balloons / Balls inside box
+      const balloonColors = [0xff4d6d, 0xff758f, 0xffd166, 0x4cc9f0, 0x7209b7, 0xf72585, 0xffffff, 0x06d6a0];
+      giftBalloons = [];
+      for (let i = 0; i < 90; i++) {
+        const rad = 0.12 + Math.random() * 0.18;
+        const col = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+        const bMesh = new THREE.Mesh(
+          new THREE.SphereGeometry(rad, 16, 16),
+          new THREE.MeshStandardMaterial({ color: col, roughness: 0.3, metalness: 0.35 })
+        );
+        bMesh.position.set(0, 1.0, 0);
+        bMesh.scale.set(0.001, 0.001, 0.001);
+        bMesh.userData = {
+          active: false,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: 0.14 + Math.random() * 0.22,
+          vz: (Math.random() - 0.5) * 0.18,
+          rotSpeed: (Math.random() - 0.5) * 0.1
+        };
+        giftScene.add(bMesh);
+        giftBalloons.push(bMesh);
+      }
+
+      giftScene.add(giftBoxGroup);
+
+      // Click to open gift box
+      container.addEventListener('click', openGiftBox3D);
+
+      animateGift3D();
+    }
+
+    function animateGift3D() {
+      requestAnimationFrame(animateGift3D);
+      const time = performance.now() * 0.001;
+
+      if (giftBoxGroup) {
+        if (!isGiftOpened) {
+          giftBoxGroup.rotation.y = time * 0.6;
+          giftBoxGroup.position.y = Math.sin(time * 2.0) * 0.08;
+        } else {
+          giftBoxGroup.rotation.y += 0.004;
+        }
+      }
+
+      if (isGiftOpened && giftLidGroup) {
+        if (giftLidGroup.position.y < 5.0) {
+          giftLidGroup.position.y += 0.12;
+          giftLidGroup.rotation.z += 0.06;
+          giftLidGroup.rotation.x += 0.04;
+        }
+      }
+
+      giftBalloons.forEach(b => {
+        if (b.userData.active) {
+          b.position.x += b.userData.vx;
+          b.position.y += b.userData.vy;
+          b.position.z += b.userData.vz;
+          b.userData.vy -= 0.0035;
+          b.userData.vx *= 0.985;
+          b.userData.vz *= 0.985;
+          b.rotation.y += b.userData.rotSpeed;
+          if (b.scale.x < 1.0) {
+            b.scale.addScalar(0.06);
+          }
+        }
+      });
+
+      if (giftRenderer && giftScene && giftCamera) {
+        giftRenderer.render(giftScene, giftCamera);
+      }
+    }
+
+    const romanticKurdishBadges = [
+      "خۆشم دەوێیت رەیانەکەم ❤️",
+      "ڕۆژی لەدایکبوونت پیرۆز بێت 🎂",
+      "شاژنی دڵم 👑",
+      "تاقانەی تێبین 🌸",
+      "تۆ دیاری خودایت بۆ من 🎁",
+      "هەموو ژیانمی ✨",
+      "ئارامی دڵم 🕊️",
+      "گوڵی بەهاری من 💐",
+      "هەناسەی ژیانم 💖",
+      "ماڵی دڵم 🏡",
+      "بۆ هەمیشە پێکەوە 💍",
+      "نیگای چاوەکانت هیوامە 💫",
+      "ڕۆحی شیرینم 🤍",
+      "پیرۆزترین کات کاتی تۆیە 🎉",
+      "بێ‌کۆتا خۆشەویستی 💓",
+      "تۆ بەشی منی تا ئەبەد 🌟"
+    ];
+
+    function openGiftBox3D() {
+      if (isGiftOpened) return;
+      isGiftOpened = true;
+
+      const hint = document.getElementById('giftOpenHint');
+      if (hint) hint.style.display = 'none';
+
+      giftBalloons.forEach(b => {
+        b.userData.active = true;
+      });
+
+      triggerGrandCelebration();
+
+      const container = document.getElementById('floating-words-container');
+      if (container) {
+        container.innerHTML = '';
+        romanticKurdishBadges.forEach((text, i) => {
+          setTimeout(() => {
+            const badge = document.createElement('div');
+            badge.className = 'floating-word-badge';
+            badge.innerText = text;
+            container.appendChild(badge);
+          }, i * 160);
+        });
+      }
     }
 
     function onWindowResize() {
